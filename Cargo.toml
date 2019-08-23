@@ -1,0 +1,17 @@
+[package]
+name = "kserd_derive"
+version = "0.1.0"
+authors = ["kurt <kurtlawrence92@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "kserd_derive"
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "0.4"
+quote = "0.6"
+syn =		{ version = "0.15", features = ["visit"] }
+
+[dev-dependencies]
+kserd =		{ path = "../kserd" }

@@ -79,11 +79,13 @@ fn to_kserd_expr(data: &Data, input_name: &Ident) -> TokenStream {
                         }
                     });
 
-                    quote! {
+                    let tokens = quote! {
                         let mut map: BTreeMap<kserd::KserdStr<'a>, kserd::Kserd<'a>> = BTreeMap::new();
                         #(map.insert(#names, #values);)*
                         kserd::Kserd::with_identity(stringify!(#input_name), Value::Cntr(map))
-                    }
+                    };
+
+                    tokens
                 }
                 Fields::Unnamed(ref fields) => {
                     unimplemented!();
@@ -101,9 +103,10 @@ fn to_kserd_expr(data: &Data, input_name: &Ident) -> TokenStream {
                     // }
                 }
                 Fields::Unit => {
-                    quote! {
-                        kserd::Kserd::with_identity(stringify!(#input_name), Value::Unit)
-                    }
+                    unimplemented!();
+                    //                     quote! {
+                    //                         kserd::Kserd::with_identity(stringify!(#input_name), Value::Unit)
+                    //                     }
                 }
             }
         }

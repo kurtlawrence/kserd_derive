@@ -3,15 +3,28 @@ name = "kserd_derive"
 version = "0.1.0"
 authors = ["kurt <kurtlawrence92@gmail.com>"]
 edition = "2018"
+description = "Proc macro for Kurt's Self-Explanatory Rust Data"
+documentation = "https://docs.rs/kserd_derive/"
+homepage = "https://github.com/kurtlawrence/kserd_derive"
+repository = "https://github.com/kurtlawrence/kserd_derive"
+readme = "README.md"
+categories = [ "data-structures", "encoding", "parsing" ]
+license = "MIT"
+
+[badges]
+travis-ci = { repository = "kurtlawrence/kserd_derive" }
+codecov = { repository = "kurtlawrence/kserd_derive" }
+
 
 [lib]
 name = "kserd_derive"
 proc-macro = true
 
 [dependencies]
-proc-macro2 = "0.4"
-quote = "0.6"
-syn =		{ version = "0.15", features = ["visit"] }
+proc-macro2 =	{ version = "1.0",  default-features = false }
+quote =		{ version = "1.0",  default-features = false,	features = ["proc-macro"] }
+syn =		{ version = "1.0",  default-features = false,	features = ["derive", "parsing",
+"printing", "proc-macro", "visit"] }
 
 [dev-dependencies]
-kserd =		{ path = "../kserd" }
+kserd =		{ version = "0.1",  default-features = false }
